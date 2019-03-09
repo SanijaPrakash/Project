@@ -22,7 +22,7 @@ class MysqlDatabase{
             "localhost",
             "root",
             "vinam@123",
-            "student",
+            "School",
             "3306"
         );
         if(!$this->conn)
@@ -61,10 +61,14 @@ class MysqlDatabase{
      * @return int
      */
     public function update($data) : int {
+         $classVariables = array_keys(get_class_vars(get_called_class()));
+         // echo $classVariables;
+         // die();
         $sql = "update ". get_called_class() . " SET ";
         foreach ($data as $key => $value){
             if(array_key_exists($key,get_class_vars(get_called_class()))){
                 $sql.= $key. "='" . $value ."',";
+                
             }
         }
         $sql =rtrim($sql,',');

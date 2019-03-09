@@ -28,7 +28,7 @@ $surnames = array(
 );
 
 $name = $names[mt_rand(0, sizeof($names) - 1)] ." ". $surnames[mt_rand(0, sizeof($surnames) - 1)];
-
+echo $name;
 $stdObj = new Student();
 
 
@@ -40,17 +40,15 @@ $studentUpdate = array(
     "Dob" => "1999-09-09",
     "status" => mt_rand(1,9),
 );
-$studentsUpdateStatus = $stdObj->update($studentUpdate);
-
+//$studentsUpdateStatus = $stdObj->update($studentUpdate);
 
 $studentInsert = array(
     "Name" =>  $name,
     "Email" => strtolower(preg_replace('/\s+/', '', $name."@gmail.com")),
-    "Dob" => date("m.d.y", mt_rand(strtotime("10 September 1976"), strtotime("22 July 2000"))),
+    "Dob" => date("Y-m-d", mt_rand(strtotime("10 September 1976"), strtotime("22 July 2000"))),
     "status" => 1,
 ); print_r($studentInsert);
 $studentsInst   = $stdObj->insert($studentInsert);
-
 
 $students_list   = $stdObj->select();
 print_r($students_list);
